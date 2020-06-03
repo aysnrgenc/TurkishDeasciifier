@@ -45,3 +45,6 @@ python deasciifierRNN.py train
 ```
 python deasciifierRNN.py test
 ```
+
+## Article
+You can review article: diacritic-restoration-recurrent.pdf
