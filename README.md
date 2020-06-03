@@ -27,9 +27,10 @@ Load function is predefined for these variables. Function loads char2int.p and i
 ## How to Create Train Dataset
 You can easily create your own dataset by obtaining large Turkish well-written text from web or other medias. 
 Obtained text should be asciified by replacing Turkish diacritic letters with ascii form.
-For example: Replace all "ş" with "s"
-             Replace all "ü" with "u"
-             ...
+For example: 
+- Replace all "ş" with "s"
+- Replace all "ü" with "u"
+- ...
 
 You have two different text files:
   - Ascii text: the one you can use as input file 
