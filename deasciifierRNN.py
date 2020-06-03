@@ -18,10 +18,10 @@ EMBEDDINGS_SIZE = 12
 STATE_SIZE = 24
 
 def get_train_val_data():
-    f_input = codecs.open('Data/data_input.txt', encoding='utf-8')
+    f_input = codecs.open('data/data_input.txt', encoding='utf-8')
     text_input = f_input.read()
 
-    f_output = codecs.open('Data/data_output.txt', encoding='utf-8')
+    f_output = codecs.open('data/data_output.txt', encoding='utf-8')
     text_output = f_output.read()
 
     input_sentences = text_input.split("\n")
@@ -33,10 +33,10 @@ def get_train_val_data():
     return train_set,val_set
 
 def prepare_data():
-    f_input = codecs.open('Data/total_input.txt', encoding='utf-8')
+    f_input = codecs.open('data/total_input.txt', encoding='utf-8')
     text_input = f_input.read()
 
-    f_output = codecs.open('Data/total_output.txt', encoding='utf-8')
+    f_output = codecs.open('data/total_output.txt', encoding='utf-8')
     text_output = f_output.read()
 
     chars = list(set(text_input+"\n"+text_output))
@@ -102,7 +102,7 @@ class SimpleRNNNetwork:
         with open(filename+"_output_b.txt", "w") as f:
             f.write(np.array_str(dy.parameter(self.output_b).npvalue()) + "\n")
         dy.save(
-            "Models/"+filename+"_train.model",
+            "models/"+filename+"_train.model",
             [self.output_w,self.output_b,self.embeddings,self.RNN]     
         )
 
@@ -166,10 +166,10 @@ class SimpleRNNNetwork:
         return output_string.replace('<EOS>', '')
 
 def prepare_test_data():
-    f_input = codecs.open('Data/data_input_test.txt', encoding='utf-8')
+    f_input = codecs.open('data/data_input_test.txt', encoding='utf-8')
     text_input = f_input.read()
 
-    f_output = codecs.open('Data/data_output_test.txt', encoding='utf-8')
+    f_output = codecs.open('data/data_output_test.txt', encoding='utf-8')
     text_output = f_output.read()
 
     input_sentences = text_input.split("\n")
@@ -223,7 +223,7 @@ def test_model():
     VOCAB_SIZE = pickle.load(open("vocab_size.p", "rb"))
 
     rnn = SimpleRNNNetwork(RNN_NUM_OF_LAYERS, EMBEDDINGS_SIZE, STATE_SIZE,VOCAB_SIZE,char2int,int2char)
-    rnn.load_model("Models/after_train.model")
+    rnn.load_model("models/after_train.model")
     test(rnn)
 
 def train_model():
